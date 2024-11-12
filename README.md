@@ -1,4 +1,4 @@
-# GenAI2024Spring
+# GenAI2024SPRING
 NTU Course - Generative AI
 
 ### [hw1. Identification of Real or AI Generated Materials](./hw1)
