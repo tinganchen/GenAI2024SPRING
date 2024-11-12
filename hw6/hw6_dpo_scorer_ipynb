@@ -1,0 +1,53 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "S2IDsQ05YSHS",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "outputId": "84ce1086-fb24-4734-9364-df8fc5dc2124"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Your score is 9.\n"
+          ]
+        }
+      ],
+      "source": [
+        "import json\n",
+        "import re\n",
+        "\n",
+        "result_path = '/content/chatbot_ui_chat_模型立場影響_2024-4-16.json'\n",
+        "\n",
+        "with open(result_path) as f:\n",
+        "  submit_result = json.load(f)\n",
+        "\n",
+        "content = submit_result['history'][0]['messages'][1]['content']\n",
+        "json_string = re.search(r'```json\\n(.+?)\\n```', content, re.DOTALL).group(1)\n",
+        "json_data = json.loads(json_string)\n",
+        "score = sum(json_data.values())\n",
+        "print(f\"Your score is {score}.\")"
+      ]
+    }
+  ]
+}
